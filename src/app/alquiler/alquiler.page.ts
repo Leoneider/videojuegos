@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alquiler',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlquilerPage implements OnInit {
 
-  constructor() { }
+  registroForm = this._fb.group({
+    documento: ["", Validators.required],
+    videojuego: ["", Validators.required]
+  });
+
+  isCargando:boolean;
+
+  constructor(private _fb: FormBuilder) { 
+    this.isCargando = false;
+  }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    console.log(this.registroForm.value);
   }
 
 }

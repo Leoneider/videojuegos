@@ -4,6 +4,49 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" novalidate>
+    <ion-list class="ion-padding-end">
+      <ion-list-header class="ion-padding-bottom">
+        <h1>Agregar Cliente</h1>
+      </ion-list-header>
 
+      <ion-item lines="inset">
+        <ion-label position="floating">Número de documento</ion-label>
+        <ion-input type="number" formControlName="documento"></ion-input>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label position="floating">Nombre completo</ion-label>
+        <ion-input type="text" formControlName="nombre"></ion-input>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label position="floating">Número de celular</ion-label>
+        <ion-input type="number" formControlName="telefono"></ion-input>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label position="stacked">Fecha de nacimiento</ion-label>
+        <ion-input type="date" formControlName="fechaNacimiento"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <section class="ion-padding-top">
+      <ion-button
+        type="submit"
+        expand="block"
+        [disabled]="this.registroForm.invalid"
+        class="ion-margin-horizontal"
+      >
+        <ion-spinner
+          slot="start"
+          name="bubbles"
+          class="ion-margin-end"
+          *ngIf="isCargando"
+        ></ion-spinner>
+        CONTINUAR</ion-button
+      >
+    </section>
+  </form>
 </ion-content>

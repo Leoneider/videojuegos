@@ -4,6 +4,131 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+  <ion-row
+    class="ion-align-self-center ion-justify-content-center ion-margin-top"
+  >
+    <ion-col size="3">
+      
+      
+      <div>
+        <ion-item lines="none" color="none">
+          <ion-icon name="trophy-outline" slot="start"></ion-icon>
+          <div>
+            <strong>Cliente más frecuente</strong>
+            <p style="margin: 0">Leoneider Trigos Guerrero</p>
+          </div>
+        </ion-item>
+      </div>
 
+
+
+    </ion-col>
+    <ion-col size="3">
+      <div>
+        <ion-item lines="none" color="none">
+          <ion-icon name="ribbon-outline" slot="start"></ion-icon>
+          
+          
+          <div>
+            <strong>Juego más rentado</strong>
+            <p style="margin: 0">Call of Duty - Warzone</p>
+          </div>
+        </ion-item>
+      </div>
+      
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-align-self-center ion-justify-content-center">
+    <ion-col size="9">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Alquilar videojuego</ion-card-title>
+          <ion-card-subtitle>Acá puedes registrar los alquileres a tus clientes.</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" novalidate>
+            <ion-list class="ion-padding-end">
+           
+              
+              <ion-grid >
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-item lines="inset">
+                    <ion-label position="floating">Numero documento del cliente</ion-label>
+                    <ion-input type="number" formControlName="documento"></ion-input>
+                  </ion-item>
+                  </ion-col>
+                  <ion-col size="2">
+                  
+                      <ion-button class="ion-margin-top">
+                        
+                        <ion-icon slot="icon-only" name="telescope-outline"></ion-icon>
+                      </ion-button>
+                   
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="12" class="ion-margin-start">
+                    <h2>Leoneider Trigos Guerrero</h2>
+                  </ion-col>
+                </ion-row>
+
+              
+
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-item lines="inset">
+                      <ion-label position="floating">Seleccione el videojuego</ion-label>
+                      <ion-select interface="popover" formControlName="videojuego">
+                        <ion-select-option value="nes">NES</ion-select-option>
+                        <ion-select-option value="n64">Nintendo64</ion-select-option>
+                        <ion-select-option value="ps">PlayStation</ion-select-option>
+                        <ion-select-option value="genesis">Sega Genesis</ion-select-option>
+                        <ion-select-option value="saturn">Sega Saturn</ion-select-option>
+                        <ion-select-option value="snes">SNES</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+
+
+              </ion-grid>
+
+        
+        
+           
+        
+             
+            </ion-list>
+        
+            <section class="ion-padding-top">
+              <ion-button
+                type="submit"
+                expand="block"
+                [disabled]="this.registroForm.invalid"
+                class="ion-margin-horizontal"
+              >
+                <ion-spinner
+                  slot="start"
+                  name="bubbles"
+                  class="ion-margin-end"
+                  *ngIf="isCargando"
+                ></ion-spinner>
+                ALQUILAR</ion-button
+              >
+            </section>
+          </form>
+          
+        </ion-card-content>
+      </ion-card>
+      
+    </ion-col>
+   
+    
+   
+  </ion-row>
 </ion-content>
