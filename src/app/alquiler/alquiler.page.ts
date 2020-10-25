@@ -10,7 +10,8 @@ export class AlquilerPage implements OnInit {
 
   registroForm = this._fb.group({
     documento: ["", Validators.required],
-    videojuego: ["", Validators.required]
+    videojuego: ["", Validators.required],
+    fechaEntrega: ["", Validators.required]
   });
 
   isCargando:boolean;
