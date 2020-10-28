@@ -19,6 +19,15 @@ export class JuegosService {
 
   
 
+
+
+  consultarJuego(id:number): Observable<any> {
+    return this._http.get(
+      `http://localhost:8080/api/juego/${id}`,
+      httpOptions
+    );
+  }
+
   consultarJuegos(): Observable<any> {
     return this._http.get(
       "http://localhost:8080/api/juego",

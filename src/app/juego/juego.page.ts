@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { JuegosService } from '../servicios/juegos.service';
+import { JuegoEditPage } from '../juego-edit/juego-edit.page';
 
 @Component({
   selector: 'app-juego',
@@ -9,7 +11,11 @@ import { JuegosService } from '../servicios/juegos.service';
 export class JuegoPage implements OnInit {
   isCargando:boolean;
   juegos = [];
-  constructor( private _juegosService: JuegosService) { 
+  
+  
+
+  constructor( private _juegosService: JuegosService,
+    private _modalController: ModalController) { 
     this.isCargando = false;
   }
 
@@ -26,5 +32,21 @@ export class JuegoPage implements OnInit {
     );
 
   }
+
+
+  async presentModal(id:number) {
+    const modal = await this._modalController.create({
+      component: JuegoEditPage,
+      cssClass: 'my-custom-class',
+      componentProps: { idJuego: id
+      }
+    });
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    console.log(data);
+  }
+
+
 
 }

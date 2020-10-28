@@ -34,7 +34,7 @@
               {{ item.precio | currency}}
             </td>
             <td class="filas">
-              <ion-button fill="clear">     
+              <ion-button fill="clear" (click)="presentModal(item.id)">     
                 <ion-icon slot="icon-only" name="construct-outline" color="secondary"></ion-icon>
               </ion-button>
             </td>
