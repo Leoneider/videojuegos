@@ -12,24 +12,16 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
- 
+export class JuegosService {
 
   constructor(private _http: HttpClient) { }
 
-  createCliente(data: any): Observable<any> {
-    // let json = JSON.stringify(data);
-    console.log(data);
-    return this._http.post(
-      "http://localhost:8080/api/cliente",
-      data,
-      httpOptions
-    );
-  }
 
-  consultarCliente(documento:string): Observable<any> {
+  
+
+  consultarJuegos(): Observable<any> {
     return this._http.get(
-      `http://localhost:8080/api/cliente/buscar/?documento=${documento}`,
+      "http://localhost:8080/api/juego",
       httpOptions
     );
   }

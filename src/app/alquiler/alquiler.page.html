@@ -11,12 +11,12 @@
     <ion-col size="3">
       
       
-      <div>
+      <div *ngIf="personaMasFrecuente">
         <ion-item lines="none" color="none">
           <ion-icon name="trophy-outline" slot="start"></ion-icon>
           <div>
             <strong>Cliente más frecuente</strong>
-            <p style="margin: 0">Leoneider Trigos Guerrero</p>
+            <p style="margin: 0">{{ personaMasFrecuente | uppercase }}</p>
           </div>
         </ion-item>
       </div>
@@ -25,14 +25,13 @@
 
     </ion-col>
     <ion-col size="3">
-      <div>
+      <div *ngIf="juegoMasFrecuente">
         <ion-item lines="none" color="none">
           <ion-icon name="ribbon-outline" slot="start"></ion-icon>
-          
-          
+    
           <div>
             <strong>Juego más rentado</strong>
-            <p style="margin: 0">Call of Duty - Warzone</p>
+            <p style="margin: 0">{{ juegoMasFrecuente | uppercase }}</p>
           </div>
         </ion-item>
       </div>
@@ -58,12 +57,12 @@
                   <ion-col size="6">
                     <ion-item lines="inset">
                     <ion-label position="floating">Numero documento del cliente</ion-label>
-                    <ion-input type="number" formControlName="documento"></ion-input>
+                    <ion-input type="number" [formControl]="documento"></ion-input>
                   </ion-item>
                   </ion-col>
                   <ion-col size="2">
                   
-                      <ion-button class="ion-margin-top">
+                      <ion-button class="ion-margin-top" (click)="buscarPersona()">
                         
                         <ion-icon slot="icon-only" name="telescope-outline"></ion-icon>
                       </ion-button>
@@ -73,7 +72,7 @@
 
                 <ion-row>
                   <ion-col size="12" class="ion-margin-start">
-                    <h2>Leoneider Trigos Guerrero</h2>
+                    <h2>{{ nombre }}</h2>
                   </ion-col>
                 </ion-row>
 
@@ -84,12 +83,8 @@
                     <ion-item lines="inset">
                       <ion-label position="floating">Seleccione el videojuego</ion-label>
                       <ion-select interface="popover" formControlName="videojuego">
-                        <ion-select-option value="nes">NES</ion-select-option>
-                        <ion-select-option value="n64">Nintendo64</ion-select-option>
-                        <ion-select-option value="ps">PlayStation</ion-select-option>
-                        <ion-select-option value="genesis">Sega Genesis</ion-select-option>
-                        <ion-select-option value="saturn">Sega Saturn</ion-select-option>
-                        <ion-select-option value="snes">SNES</ion-select-option>
+                        <ion-select-option [value]="item.id" *ngFor="let item of juegos">{{item.nombre | uppercase }}</ion-select-option>
+                        
                       </ion-select>
                     </ion-item>
                   </ion-col>

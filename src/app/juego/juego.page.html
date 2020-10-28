@@ -5,5 +5,46 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Listado de juegos disponibles</ion-card-subtitle>
+      <ion-card-title>Juegos</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+
+      <div>
+        <table>
+          <tr class="header-table">
+            <td>
+              Nombre
+            </td>
+            <td>
+              Precio
+            </td>
+            <td>
+            </td>
+          </tr>
+
+          <tr *ngFor="let item of juegos">
+            <td class="filas">
+              {{ item.nombre | uppercase }}
+            </td>
+            <td class="filas">
+              {{ item.precio | currency}}
+            </td>
+            <td class="filas">
+              <ion-button fill="clear">     
+                <ion-icon slot="icon-only" name="construct-outline" color="secondary"></ion-icon>
+              </ion-button>
+            </td>
+
+          </tr>
+
+        </table>
+      </div>
+      
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

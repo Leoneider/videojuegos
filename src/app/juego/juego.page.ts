@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JuegosService } from '../servicios/juegos.service';
 
 @Component({
   selector: 'app-juego',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./juego.page.scss'],
 })
 export class JuegoPage implements OnInit {
-
-  constructor() { }
+  isCargando:boolean;
+  juegos = [];
+  constructor( private _juegosService: JuegosService) { 
+    this.isCargando = false;
+  }
 
   ngOnInit() {
+    this.isCargando = true;
+    this._juegosService.consultarJuegos().subscribe(
+      (res) => {
+        this.juegos = res;
+        this.isCargando = false;
+      },
+      (error) => {
+        console.log(<any>error);
+      }
+    );
+
   }
 
 }
